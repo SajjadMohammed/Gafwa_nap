@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <style name="myTheme"
+         parent="Theme.AppCompat.Light.NoActionBar">
+    <item name="windowActionBar">false</item>
+    <item name="colorPrimaryDark">#32456d</item>
+    <item name="colorPrimary">#FF0C455F</item>
+    <item name="colorAccent">#32456d</item>
+    <item name="android:windowFullscreen">true</item>
+    <item name="android:navigationBarColor">#FF0C455F</item>
+  </style>
+</resources>

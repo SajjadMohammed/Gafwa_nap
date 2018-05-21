@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">غفوة</string>
+  <string name="appPub">ca-app-pub-3460700696008253~8951837423</string>
+  <string name="interId">ca-app-pub-3460700696008253/1605923775</string>
+  <string name="smartBannerId">ca-app-pub-3460700696008253/7579524934</string>
+  <string name="m6">قيلولة الست دقائق حيث تجعل الذاكرة أكثر كفائة</string>
+  <string name="m20">قيلولة الـ 20  دقيقة يعطيك دفعة قوية للانتاجية واليقظة، ويمنحك القوة المباشرة وتجعلك أقل عرضة لامراض  القلب</string>
+  <string name="m30">قيلولة الـ 30  دقيقة يعطيك دفعة قوية للانتاجية واليقظة، ويمنحك القوة المباشرة وتجعلك أقل عرضة لامراض القلب</string>
+  <string name="m45">قيلولة الـ 45  دقيقة له فوائد صحية في خفض الدم</string>
+  <string name="m60">قيلولة الـ 60 دقيقة يمنحك دفعة الى الأمام</string>
+  <string name="m90">قيلولة الـ 90 دقيقة تزيد من درجات الابداع</string>
+  <string name="startString">عند تشغيلك لتطبيق غفوة سيقوم التطبيق بتذكيرك في الساعة الثانية من بعد ظهر كل يوم لتبدأ بأخذ غفوتك المفيدة لصحة جسمك وعقلك</string>
+</resources>
