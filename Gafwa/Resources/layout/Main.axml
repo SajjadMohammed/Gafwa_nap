@@ -42,13 +42,4 @@
         android:layout_below="@id/myText"
         android:layout_centerHorizontal="true"
         android:textColor="#FFF" />
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/AdView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        app:adSize="SMART_BANNER"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        app:adUnitId="@string/smartBannerId" />
 </RelativeLayout>

@@ -4,7 +4,7 @@ namespace Gafwa
 {
     public class Alerts
     {
-        Context context;
+        readonly Context context;
         public Alerts(Context context)
         {
             this.context = context;

@@ -9,14 +9,14 @@ namespace Gafwa
 	{
 		PendingIntent pi;
 		NotificationManager nMngr;
-		int nid;
+		int notificationId;
 		string title, content;
         Android.Net.Uri alarmSound;
 
 
         public override void OnReceive(Context context, Intent intent)
 		{
-			nid = intent.GetIntExtra("nid", 0);
+			notificationId = intent.GetIntExtra("nid", 0);
 			title = intent.GetStringExtra("title");
 			content = intent.GetStringExtra("content");
 			var cx = context;
@@ -24,7 +24,7 @@ namespace Gafwa
 			var alarmIntent = new Intent(cx, typeof(GhafwaActivity));
 			alarmIntent.AddFlags(ActivityFlags.ClearTop);
 
-            if (nid == 111)
+            if (notificationId == 111)
             {
                 alarmSound = Android.Net.Uri.Parse("android.resource://" + cx.PackageName + "/" + Resource.Raw.startGhafwa);
             }
@@ -32,7 +32,7 @@ namespace Gafwa
             {
                 alarmSound = Android.Net.Uri.Parse("android.resource://" + cx.PackageName + "/" + Resource.Raw.beautiful_sound);
             }
-			pi = PendingIntent.GetActivity(cx, nid, alarmIntent, 0);
+			pi = PendingIntent.GetActivity(cx, notificationId, alarmIntent, 0);
 			var nBuilder = new NotificationCompat.Builder(cx)
 												.SetContentTitle(title)
 												.SetContentText(content)
@@ -42,11 +42,11 @@ namespace Gafwa
 												.Build();
             nBuilder.Sound = alarmSound;
 			nMngr = cx.GetSystemService(Context.NotificationService) as NotificationManager;
-			nMngr.Notify(nid, nBuilder);
+			nMngr.Notify(notificationId, nBuilder);
 		}
 		protected override void Dispose(bool disposing)
 		{
-			nMngr.Cancel(nid);
+			nMngr.Cancel(notificationId);
 			base.Dispose(disposing);
 		}
 	}

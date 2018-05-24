@@ -6,10 +6,7 @@ using V7ToolBar = Android.Support.V7.Widget.Toolbar;
 using Android.Content.PM;
 using Android.Content;
 using Android.Views;
-using Android.Gms.Ads;
-using Android.Net.Wifi;
 using Java.Util;
-using System;
 
 namespace Gafwa
 {
@@ -24,9 +21,7 @@ namespace Gafwa
         ISharedPreferencesEditor sharedPreferencesEditor;
         RateClass rateClass;
 
-        AdView adView;
-        InterstitialAd interstitialAdView;
-        WifiManager wifi;
+        
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -51,26 +46,6 @@ namespace Gafwa
             }
             ghafwaButton.Click += GhafwaButton_Click;
 
-            adView = FindViewById<AdView>(Resource.Id.AdView);
-            MobileAds.Initialize(ApplicationContext, GetString(Resource.String.appPub));
-            interstitialAdView = new InterstitialAd(this)
-            {
-                AdUnitId = GetString(Resource.String.interId)
-            };
-            var interListener = new InterAdListener(interstitialAdView);
-
-            wifi = GetSystemService(WifiService) as WifiManager;
-            if (!wifi.IsWifiEnabled)
-                adView.Visibility = ViewStates.Gone;
-            else
-            {
-                adView.LoadAd(new AdRequest.Builder().Build());
-                interstitialAdView.LoadAd(new AdRequest.Builder().Build());
-
-                // Load the next InterstitialAd
-                interListener.OnAdClosed();
-                interstitialAdView.AdListener = interListener;
-            }
             //
             rateClass = new RateClass();
         }
@@ -83,47 +58,18 @@ namespace Gafwa
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            switch (item.ItemId)
+
+            if (item.ItemId == Resource.Id.rate)
             {
-                case Resource.Id.rate:
-                    rateClass.RateApp();
-                    return true;
-                case Resource.Id.dollar:
-                    if (wifi.IsWifiEnabled)
-                    {
-                        adView.Visibility = ViewStates.Visible;
-                    }
-                    //Interstial AdView
-                    if (interstitialAdView.IsLoaded)
-                    {
-                        interstitialAdView.Show();
-                    }
-                    else
-                    {
-                        interstitialAdView.LoadAd(new AdRequest.Builder().Build());
-                    }
-                    return true;
-                default:
-                    return base.OnOptionsItemSelected(item);
+                rateClass.RateApp();
+                return true;
             }
+            else
+                return base.OnOptionsItemSelected(item);
         }
 
         private void GhafwaButton_Click(object sender, System.EventArgs e)
         {
-            if (wifi.IsWifiEnabled)
-            {
-                adView.Visibility = ViewStates.Visible;
-            }
-            //Interstial AdView
-            if (interstitialAdView.IsLoaded)
-            {
-                interstitialAdView.Show();
-            }
-            else
-            {
-                interstitialAdView.LoadAd(new AdRequest.Builder().Build());
-            }
-
             if (ghafwaButton.Text.Equals("تشغيل"))
             {
                 var alertMngr = new Android.Support.V7.App.AlertDialog.Builder(this);
